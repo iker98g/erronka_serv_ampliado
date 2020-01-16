@@ -3,6 +3,6 @@
         public $host='localhost';
         public $userbbdd='root';
         public $passbbdd='';
-        public $ddbbname='bbdd_grupo4';
+        public $ddbbname='bbdd_grupo4_ampliado';
     }
 ?>
