@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2019 a las 13:34:12
+-- Tiempo de generación: 16-01-2020 a las 10:00:34
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bbdd_grupo4`
+-- Base de datos: `bbdd_grupo4_ampliado`
 --
 
 DELIMITER $$
@@ -319,19 +319,20 @@ CREATE TABLE `usuario` (
   `contrasena` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `correo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` int(1) NOT NULL DEFAULT 2
+  `tipo` int(1) NOT NULL DEFAULT 2,
+  `idEquipo` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasena`, `nombre`, `correo`, `tipo`) VALUES
-(1, 'iker', '$2y$10$e980GZZcaWQJ8Bn6CVX/qOl9NkI30hERzfHq9PnGkv2oD.VnHuega', 'Iker', 'iker@gmail.com', 1),
-(2, 'markel', '$2y$10$G.yW1YVh/QQDVy51VtroAO3AWTxLvZ/tSjSwxfmkuYzkMJWVWkhw6', 'Markel', 'markel@gmail.com', 2),
-(3, 'eukene', '$2y$10$cjtSb9ZH5XYwYLYNIXDvgO5C/Q3rEJDkGpt.lwDruruQ1vIQyBXfy', 'Eukene', 'eukene@gmail.com', 0),
-(4, 'eder', '$2y$10$OdU/6Ab4wVmnRWAoWhdyjunWMdEuNCXvD3BE5B8bfU/T.HfjBhgOu', 'Eder', 'eder@gmail.com', 2),
-(100, 'anonimo', '$2y$10$rSaeNyz4m29fP/lyqAcEjOvzkDZnsIoQQEwU/wD.A7ALvwhcyofTW', 'anonimo', 'anonimo@gmail.com', 3);
+INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasena`, `nombre`, `correo`, `tipo`, `idEquipo`) VALUES
+(1, 'iker', '$2y$10$e980GZZcaWQJ8Bn6CVX/qOl9NkI30hERzfHq9PnGkv2oD.VnHuega', 'Iker', 'iker@gmail.com', 1, 0),
+(2, 'markel', '$2y$10$G.yW1YVh/QQDVy51VtroAO3AWTxLvZ/tSjSwxfmkuYzkMJWVWkhw6', 'Markel', 'markel@gmail.com', 2, 0),
+(3, 'eukene', '$2y$10$cjtSb9ZH5XYwYLYNIXDvgO5C/Q3rEJDkGpt.lwDruruQ1vIQyBXfy', 'Eukene', 'eukene@gmail.com', 0, 0),
+(4, 'eder', '$2y$10$OdU/6Ab4wVmnRWAoWhdyjunWMdEuNCXvD3BE5B8bfU/T.HfjBhgOu', 'Eder', 'eder@gmail.com', 2, 0),
+(100, 'anonimo', '$2y$10$rSaeNyz4m29fP/lyqAcEjOvzkDZnsIoQQEwU/wD.A7ALvwhcyofTW', 'anonimo', 'anonimo@gmail.com', 3, 0);
 
 --
 -- Índices para tablas volcadas
@@ -375,7 +376,8 @@ ALTER TABLE `jugador`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD KEY `id_equipo` (`idEquipo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
